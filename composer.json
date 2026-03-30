@@ -1,0 +1,31 @@
+{
+    "name": "jawitold/enum-attribute-lookup-bundle",
+    "description": "A Symfony bundle for automated discovery and runtime lookup of PHP 8.1+ Enum case attributes.",
+    "keywords": ["symfony", "bundle", "enum", "attributes", "metadata", "lookup", "php8"],
+    "type": "symfony-bundle",
+    "require": {
+        "symfony/dependency-injection": "^7.0|^8.0",
+        "symfony/http-kernel": "^7.0|^8.0",
+        "symfony/config": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.94",
+        "phpstan/phpstan": "^2.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "JaWitold\\EnumAttributeLookupBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JaWitold\\EnumAttributeLookupBundle\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JaWitold"
+        }
+    ]
+}
