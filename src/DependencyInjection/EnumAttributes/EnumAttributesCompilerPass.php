@@ -49,7 +49,7 @@ class EnumAttributesCompilerPass implements CompilerPassInterface
             foreach ($reflection->getCases() as $case) {
                 $attributes = [];
                 foreach ($case->getAttributes() as $key => $attribute) {
-                    if (!in_array(EnumCaseAttributeInterface::class, new \ReflectionClass($attribute)->getInterfaceNames(), true)) {
+                    if (!in_array(EnumCaseAttributeInterface::class, new \ReflectionClass($attribute->getName())->getInterfaceNames(), true)) {
                         continue;
                     }
 
