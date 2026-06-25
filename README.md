@@ -34,7 +34,7 @@ Define an attribute class that implements `EnumCaseAttributeInterface`:
 ```php
 namespace App\Attribute;
 
-use JaWitold\EnumAttributeLookupBundle\Contract\EnumCaseAttributeInterface;
+use JaWitold\EnumAttributeLookupBundle\Interface\EnumCaseAttributeInterface;
 
 #[\Attribute(\Attribute::TARGET_CLASS_CONSTANT)]
 class RoleMetadata implements EnumCaseAttributeInterface

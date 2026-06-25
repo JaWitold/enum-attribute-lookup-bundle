@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JaWitold\EnumAttributeLookupBundle\Contract;
+namespace JaWitold\EnumAttributeLookupBundle\Interface;
 
 use JaWitold\EnumAttributeLookupBundle\AttributeLookupTrait;
 
