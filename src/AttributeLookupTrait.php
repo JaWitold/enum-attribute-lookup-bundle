@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace JaWitold\EnumAttributeLookupBundle;
 
-use JaWitold\EnumAttributeLookupBundle\Contract\EnumCaseAttributeInterface;
-use JaWitold\EnumAttributeLookupBundle\DependencyInjection\EnumRegistry;
+use JaWitold\EnumAttributeLookupBundle\Interface\EnumCaseAttributeInterface;
+use JaWitold\EnumAttributeLookupBundle\EnumRegistry;
 
 /**
  * Adds attribute-lookup methods to an enum.
@@ -33,12 +33,16 @@ use JaWitold\EnumAttributeLookupBundle\DependencyInjection\EnumRegistry;
  *     // All Label attributes on a specific case:
  *     $labels = Status::getAttributes(Status::ACTIVE, fn($a) => $a instanceof Label);
  * </pre>
+ *
+ * @phpstan-require-implements \UnitEnum
  */
 trait AttributeLookupTrait
 {
     public static function getCasesByAttribute(string $fqcn): array
     {
-        return self::getCases(static fn (object $attribute) => $attribute instanceof $fqcn);
+        return self::getCases(
+            static fn (object $attribute) => $attribute instanceof $fqcn,
+        );
     }
 
     /**
@@ -46,17 +50,18 @@ trait AttributeLookupTrait
      *
      * @return list<\UnitEnum>
      */
-    public static function getCases(callable $filter
- = static function (): bool {
-     return true;
- }): array {
+    public static function getCases(
+        callable $filter = static function (): bool {
+            return true;
+        },
+    ): array {
         $result = [];
         foreach (EnumRegistry::getMap(self::class) as $name => $attributes) {
             if (!array_any($attributes, $filter)) {
                 continue;
             }
 
-            $result[] = constant(self::class.'::'.$name);
+            $result[] = constant(self::class . '::' . $name);
         }
 
         return $result;
@@ -65,13 +70,17 @@ trait AttributeLookupTrait
     /**
      * @return list<object>
      */
-    public static function getAttributes(self $case, callable $filter
- = static function (): bool {
-     return true;
- }): array {
-        return array_values(array_filter(
-            EnumRegistry::getMap(self::class)[$case->name] ?? [],
-            $filter
-        ));
+    public static function getAttributes(
+        self $case,
+        callable $filter = static function (): bool {
+            return true;
+        },
+    ): array {
+        return array_values(
+            array_filter(
+                EnumRegistry::getMap(self::class)[$case->name] ?? [],
+                $filter,
+            ),
+        );
     }
 }

@@ -2,5 +2,7 @@
 
 composer.lock
 .php-cs-fixer.cache
+.phpunit.cache
+
 
 .idea

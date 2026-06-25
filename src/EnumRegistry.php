@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JaWitold\EnumAttributeLookupBundle\DependencyInjection;
+namespace JaWitold\EnumAttributeLookupBundle;
 
 /**
  * @internal
